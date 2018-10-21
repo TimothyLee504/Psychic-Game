@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psychic-Game</title>
+</head>
+<body>
+    <div>
+        <p id="directions-text">Guess what letter I'm thinking of</p>
+        <p id="userchoice-text"></p>
+        <p id="computerchoice-text"></p>
+        <p id="wins-text"></p>
+        <p id="losses-text"></p>
+    </div>
+    <script type="text/javascript">
+        var computerChoices = ["a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"];
+        var wins = 0
+        var losses = 0
+
+        var directionsText = document.getElementById("directions-text");
+        var userChoiceText = document.getElementById("userchoice-text");
+        var computerChoiceText = document.getElementById("computerchoice-text");
+        var winsText = document.getElementById("wins-text");
+        var lossesText = document.getElementById("losses-text")
+
+        document.onkeyup = function(event){
+            var userGuess = event.key;
+            var computerGuesses = computerChoices[Math.floor(Math.random() * computerChoice.length)];
+
+        }
+    </script>
+</body>
+</html>
