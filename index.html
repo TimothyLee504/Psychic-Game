@@ -7,26 +7,46 @@
 </head>
 <body>
     <div>
-        <p id="directions-text">Guess what letter I'm thinking of</p>
+        <p>What letter am I thinking of?</p>
+        <p id="directions-text">Press any letter to start guessing!</p>
         <p id="userchoice-text"></p>
         <p id="computerchoice-text"></p>
         <p id="wins-text"></p>
         <p id="losses-text"></p>
+        <p id="guesses-text"></p>
     </div>
     <script type="text/javascript">
         var computerChoices = ["a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"];
         var wins = 0
         var losses = 0
+        var guesses = 7
 
         var directionsText = document.getElementById("directions-text");
         var userChoiceText = document.getElementById("userchoice-text");
         var computerChoiceText = document.getElementById("computerchoice-text");
         var winsText = document.getElementById("wins-text");
-        var lossesText = document.getElementById("losses-text")
+        var lossesText = document.getElementById("losses-text");
+        var guessesText = document.getElementById("guesses-text");
 
         document.onkeyup = function(event){
             var userGuess = event.key;
-            var computerGuesses = computerChoices[Math.floor(Math.random() * computerChoice.length)];
+            var computerGuesses = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+           {if(userChoiceText === computerChoiceText){
+            wins++;
+            guesses = 7
+                }else{
+                    guesses--;
+                    }
+                if(guesses === 0){
+                     losses++;
+                     guesses = 7
+                    }
+            }
+        userChoiceText.textContent = "You chose:" + userGuess;
+        winsText.textContent = "Wins: " + wins;
+        lossesText.textContent = "Losses: " + losses;
+        guessesText.textContent = "Remaining tries " + guesses;
 
         }
     </script>
