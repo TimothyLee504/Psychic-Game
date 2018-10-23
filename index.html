@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Psychic-Game</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <div>
@@ -11,6 +12,7 @@
         <p id="directions-text">Press any letter to start guessing!</p>
         <p id="userchoice-text"></p>
         <p id="computerchoice-text"></p>
+        <p id="userguessedletters-text"></p>
         <p id="wins-text"></p>
         <p id="losses-text"></p>
         <p id="guesses-text"></p>
@@ -20,6 +22,7 @@
         var wins = 0
         var losses = 0
         var guesses = 7
+        var guessedLetters = [];
 
         var directionsText = document.getElementById("directions-text");
         var userChoiceText = document.getElementById("userchoice-text");
@@ -32,23 +35,30 @@
             var userGuess = event.key;
             var computerGuesses = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-           {if(userChoiceText === computerChoiceText){
-            wins++;
-            guesses = 7
-                }else{
-                    guesses--;
-                    }
-                if(guesses === 0){
-                     losses++;
-                     guesses = 7
-                    }
+           if (userChoiceText === computerChoiceText) {
+                wins++;
+                guesses = 7;
+                guessedLetters = [];
             }
-        userChoiceText.textContent = "You chose:" + userGuess;
+            else {
+                guesses--;
+            }
+            if (guesses === 0) {
+                losses++;
+                guesses = 7;
+                guessedLetters = [];
+            }
+            if(userGuess !== computerGuesses){
+                guessedLetters.push(userGuess);
+            }
+    
+        userChoiceText.textContent = "You guessed :" + guessedLetters;
         winsText.textContent = "Wins: " + wins;
         lossesText.textContent = "Losses: " + losses;
-        guessesText.textContent = "Remaining tries " + guesses;
-
+        guessesText.textContent = "Remaining tries " + guesses; 
+        console.log(guessedLetters)
         }
+        
     </script>
 </body>
 </html>
